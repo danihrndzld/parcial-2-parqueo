@@ -1,0 +1,21 @@
+meta {
+  name: Cobrar dos veces
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseUrl}}/tickets/{{ticketId}}/salida
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "salida": "2026-10-22T10:00:00"
+  }
+}
+
+assert {
+  res.status: eq 409
+}

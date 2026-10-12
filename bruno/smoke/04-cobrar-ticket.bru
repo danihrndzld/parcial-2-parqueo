@@ -1,0 +1,21 @@
+meta {
+  name: Cobrar ticket
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/tickets/{{ticketId}}/salida
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "salida": "2026-10-22T09:00:00"
+  }
+}
+
+assert {
+  res.status: eq 200
+}

@@ -1,0 +1,21 @@
+meta {
+  name: Salida antes de la entrada
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/tickets/{{ticketId}}/salida
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "salida": "2026-10-22T07:59:00"
+  }
+}
+
+assert {
+  res.status: eq 422
+}

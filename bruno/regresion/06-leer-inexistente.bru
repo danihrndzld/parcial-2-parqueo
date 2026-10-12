@@ -1,0 +1,15 @@
+meta {
+  name: Leer ticket inexistente
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/tickets/999
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 404
+}

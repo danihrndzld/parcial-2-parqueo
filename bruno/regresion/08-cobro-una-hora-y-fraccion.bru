@@ -1,0 +1,23 @@
+meta {
+  name: Cobro de una hora y fraccion
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseUrl}}/tickets/{{ticketId}}/salida
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "salida": "2026-10-22T09:01:00"
+  }
+}
+
+assert {
+  res.status: eq 200
+  res.body.minutos: eq 61
+  res.body.monto: eq 20
+}

@@ -1,0 +1,26 @@
+meta {
+  name: Abrir ticket
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/tickets
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "placa": "P100AAA",
+    "entrada": "2026-10-22T08:00:00"
+  }
+}
+
+assert {
+  res.status: eq 201
+}
+
+script:post-response {
+  bru.setVar("ticketId", res.body.id);
+}

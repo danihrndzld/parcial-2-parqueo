@@ -1,0 +1,21 @@
+meta {
+  name: Cobrar ticket inexistente
+  type: http
+  seq: 12
+}
+
+post {
+  url: {{baseUrl}}/tickets/999/salida
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "salida": "2026-10-22T09:00:00"
+  }
+}
+
+assert {
+  res.status: eq 404
+}

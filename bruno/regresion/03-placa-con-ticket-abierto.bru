@@ -1,0 +1,22 @@
+meta {
+  name: Placa con ticket abierto
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/tickets
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "placa": "P123ABC",
+    "entrada": "2026-10-22T08:30:00"
+  }
+}
+
+assert {
+  res.status: eq 409
+}

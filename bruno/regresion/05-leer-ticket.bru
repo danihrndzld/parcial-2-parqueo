@@ -1,0 +1,16 @@
+meta {
+  name: Leer ticket
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/tickets/{{ticketId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body.placa: eq P123ABC
+}

@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+api.log
+api.pid
+results.xml
+node_modules/

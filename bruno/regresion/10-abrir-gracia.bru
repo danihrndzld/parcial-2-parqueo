@@ -1,0 +1,26 @@
+meta {
+  name: Abrir ticket para gracia
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{baseUrl}}/tickets
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "placa": "M456DEF",
+    "entrada": "2026-10-22T08:00:00"
+  }
+}
+
+assert {
+  res.status: eq 201
+}
+
+script:post-response {
+  bru.setVar("graciaId", res.body.id);
+}

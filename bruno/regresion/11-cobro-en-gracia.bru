@@ -1,0 +1,22 @@
+meta {
+  name: Cobro dentro de la gracia
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{baseUrl}}/tickets/{{graciaId}}/salida
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "salida": "2026-10-22T08:15:00"
+  }
+}
+
+assert {
+  res.status: eq 200
+  res.body.monto: eq 0
+}
